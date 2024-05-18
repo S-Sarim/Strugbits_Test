@@ -1,0 +1,68 @@
+<head>
+    <style type="text/css">
+        body {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            animation: blinker 1s linear infinite;
+			margin-top: 20px;
+        }
+
+        h2 {
+            color: seashell;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        form {
+            width: 30%;
+            height: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: cadetblue;
+            color: beige;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 10%;
+            margin-top: 20px;
+        }
+
+        .contain {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: slateblue;
+            border-radius: 50%;
+            border: 2px solid black;
+            font-size: 30;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+	<form action="/login" method="POST">
+		<h2>Login</h2>
+		<div class="contain">
+			<input type="text" name="username" placeholder="username">
+		</div>
+		<div class="contain">
+			<input type="password" name="password" placeholder="password">
+		</div>
+        <p class="error"><%= error %></p>
+		<button>Login</button>
+	</form>
+</body>

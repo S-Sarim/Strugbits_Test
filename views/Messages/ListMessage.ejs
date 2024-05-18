@@ -1,0 +1,116 @@
+<head>
+    <style>
+      .center{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10%;
+      }
+      table {
+            text-align: center;
+            width: 60%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      th,
+      td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+
+      }
+
+      th {
+            background-color: cadetblue;
+            color: beige;
+      }
+      .container {
+        height: 100px;
+        position: relative;
+      }
+      .central {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      .fcc-btn {
+            background-color: cornflowerblue;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+        }
+      /* a:hover {
+            color: black;
+            font-size: 200%;
+            border-radius: 50%;
+        } */
+
+      button {
+        font-size: large;
+        border-radius: 30%;
+      }
+      .sidebar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+      }
+
+      .sidebar ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+      }
+
+      .sidebar li {
+            margin: 0;
+      }
+
+      .sidebar a {
+            text-decoration: none;
+            color: #fff;
+      }
+      button{
+        align-self: center;
+      }
+    </style>
+</head>
+<body>
+  <%- include('../sidebar.ejs') %>
+  <main>
+    <div class="container">
+        <div class="central">
+          <a class="fcc-btn" href="/Messages/SendMessage">Send A Message</a>
+        </div>
+      </div>
+      <table class="center">
+        <thead>
+          <tr>
+            <th>Sender</th>
+            <th>Message</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% messages.forEach(message => { %>
+            <tr>
+              <td><%= message.sender %></td>
+              <td><%= message.message %></td>
+                <td> 
+                  <form method="POST" action='/messages/deletemessage'>
+                    <input type="hidden" name="message_ID" value="<%= message._id %>">
+                    <button type="submit">Delete</button>
+                  </form>
+                </td>
+            </tr>
+          <% }); %>   
+        </tbody>
+      </table>    
+  </main>
+</body>
